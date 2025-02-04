@@ -77,9 +77,13 @@ objects:
     name: ${JAEGER_SERVICE_NAME}
     labels:
       app: jaeger
-      jaeger-infra: jaeger-deployment
+      jaeger-infra: jaeger-pod
   spec:
     replicas: 1
+    selector:
+      matchLabels:
+        app: jaeger
+        jaeger-infra: jaeger-pod
     strategy:
       type: Recreate
     template:
